@@ -1,4 +1,4 @@
-# el-brokering
+# el-arbitrage
 Profit opportunities from trading between bots in [Eternal Lands](http://eternal-lands.com/). I noticed that sometimes a bot (or NPC) is selling an item for less than another bot is paying for that item. This is an effort (just for fun) to systematically find the biggest opportunities for profit.
 
 `scrape_elwiki.py` is a script to pull all items-related pages from the [Eternal Lands Wiki](https://elwiki.net/) and store them locally. This takes a little over an hour; the results are stored locally (~80MB).
