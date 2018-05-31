@@ -7,9 +7,10 @@ import re
 with open('pages.pkl', 'rb') as f:
     pages = pickle.load(f)
 
-# Get every item's name and weight
+# Get every item's name, weight, and stackability
 #   o Name is essentially the last bit of the URL
 #   o Weight is the smallest number mentioned with "EMU" after it
+#   o Stackability is usually either "yes" or "no"
 weights = [
     (
         p[0].replace(
@@ -18,17 +19,16 @@ weights = [
         min([
             int(n) 
             for n in re.findall('(\d+)\s*emu', str(p[1]).lower())
-        ], default = None)
+        ], default = 1), 
+        ','.join(re.findall('stackable:\s*([a-z]+)', str(p[1]).lower()))
     ) 
     for p in pages
 ]
-# Filter out anything without a weight
-weights = [w for w in weights if w[1] is not None]
 
-# Structure the weights as a dataframe
+# Structure the item information as a dataframe
 weights = pd.DataFrame(
     weights, 
-    columns = ['Item', 'Weight']
+    columns = ['Item', 'Weight', 'Stackable']
 ).set_index('Item')
 
 # No real item should have weight 0, so change it to 1
