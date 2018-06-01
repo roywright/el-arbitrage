@@ -28,8 +28,8 @@ weights = [
 # Structure the item information as a dataframe
 weights = pd.DataFrame(
     weights, 
-    columns = ['Item', 'Weight', 'Stackable']
-).set_index('Item')
+    columns = ['WikiPage', 'Weight', 'Stackable']
+)
 
 # No real item should have weight 0, so change it to 1
 weights.loc[weights.Weight == 0, 'Weight'] = 1
