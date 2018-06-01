@@ -7,8 +7,8 @@ import re
 with open('pages.pkl', 'rb') as f:
     pages = pickle.load(f)
 
-# Get every item's name, weight, and stackability
-#   o Name is essentially the last bit of the URL
+# Get every item's wiki page title, weight, and stackability
+#   o Wiki page title is essentially the last bit of the URL
 #   o Weight is the smallest number mentioned with "EMU" after it
 #   o Stackability is usually either "yes" or "no"
 weights = [
